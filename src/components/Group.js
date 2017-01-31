@@ -38,7 +38,7 @@ class Group extends Component {
 
   render () {
     return (
-      <Card style={{ width: '31%', margin: '1%' }} >
+      <Card style={{minWidth: '320px', maxWidth: '31%', margin: '1%' }} >
         <CardTitle
           avatar={this.props.avatar}
           title={this.props.name}

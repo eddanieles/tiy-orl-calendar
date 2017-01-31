@@ -3,6 +3,7 @@ import base from '../config/rebase'
 import { getMeetupGroups } from '../config/meetup'
 import { currentMeetupToken } from '../util/meetupToken'
 import Group from './Group'
+import Masonry from 'react-masonry-component'
 
 class Profile extends Component {
 
@@ -42,7 +43,12 @@ class Profile extends Component {
     return (
       <div>
         <h1>Choose Meetup Groups to Follow</h1>
-        <div style={{ display: 'flex', flexFlow: 'row wrap' }} >
+          <Masonry
+                className={'my-gallery-class'}
+                elementType={'div'}
+                disableImagesLoaded={false}
+                updateOnEachImageLoad={false}
+            >
           {groups.map(group => <Group
             key={group.id}
             name={group.name}
@@ -52,11 +58,10 @@ class Profile extends Component {
             description={group.plain_text_description}
             toggleGroup={this.toggleGroup.bind(this, group.id)}
             selected={this.state.selectedGroups.includes(group.id)}/>)}
-        </div>
+        </Masonry>
       </div>
     )
   }
 }
 
 export default Profile
-
